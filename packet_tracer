@@ -1,0 +1,41 @@
+Packet Tracer commands
+show running-config
+show startup-config
+show version
+enable
+	show flash
+
+>enable
+	#configure terminal
+		(config)hostname TEST
+		(config)line console 0
+			(config-line)password admin
+			(config-line)login
+			(config-line)exit
+		(config)line vty 0 15
+			(config-line)password admin1
+			(config-line)login
+			(config-line)exit
+		(config)exit
+	#configure terminal
+		(config)enable password admin2
+		(config)enable secret admin3
+		(config)exit
+	#exit
+(Press RETURN - password=admin)
+>enable (password=admin3)
+	#write
+	#show running-config
+	#show starting-config
+	#copy running-config startup-config
+	#copy running-config flash
+	#show interfaces
+	#show interfaces serial 0/0/0
+	#show ip interface brief
+	#show ip route
+	
+	#configure terminal
+		(config)banner motd "bla bla bla"
+	
+	#configure terminal
+		(config)service password-encryption
