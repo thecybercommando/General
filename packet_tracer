@@ -58,3 +58,23 @@ telnet needs password/secret enabled first
 		(config)ip ssh version 2
 		(config)crypto key generate rsa
 		(config)ip domain-name test.com
+		
+		vlan 10
+			name SALES
+		vlan 20
+			name IT
+		do show vlan
+		
+		int f0/1
+			switchport mode access
+			switchport access vlan 10
+		int f0/3
+			switchport mode access
+			switchport access vlan 10
+		
+		int f0/2
+			switchport mode access
+			switchport access vlan 20
+		int f0/4
+			switchport mode access
+			switchport access vlan 20
