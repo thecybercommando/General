@@ -59,22 +59,38 @@ telnet needs password/secret enabled first
 		(config)crypto key generate rsa
 		(config)ip domain-name test.com
 		
-		vlan 10
-			name SALES
-		vlan 20
-			name IT
-		do show vlan
+		(config)vlan 10
+			(config-if-vlan)name SALES
+		(config)vlan 20
+			(config-if-vlan)name IT
+		(config)do show vlan
 		
-		int f0/1
-			switchport mode access
-			switchport access vlan 10
-		int f0/3
-			switchport mode access
-			switchport access vlan 10
+		(config)int f0/1
+			(config-if)switchport mode access
+			(config-if)switchport access vlan 10
+		(config)int f0/3
+			(config-if)switchport mode access
+			(config-if)switchport access vlan 10
 		
-		int f0/2
-			switchport mode access
-			switchport access vlan 20
-		int f0/4
-			switchport mode access
-			switchport access vlan 20
+		(config)int f0/2
+			(config-if)switchport mode access
+			(config-if)switchport access vlan 20
+		(config)int f0/4
+			(config-if)switchport mode access
+			(config-if)switchport access vlan 20
+Trunking
+		(config)vtp domain test
+		(config)vtp mode server OR vtp mode client
+		(config)int f0/1
+			(config-if)switchport mode trunk
+
+Range 
+		(config)int range f0/4 , f0/7
+		(config)int f0/1
+			(config-if)switchport mode access
+			(config-if)switchport port-security
+			(config-if)switchport port-security mac-address sticky
+			(config-if)switchport port-security violation shutdown
+	#show port-security interface f0/1
+			
+			
