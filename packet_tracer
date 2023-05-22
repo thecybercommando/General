@@ -92,5 +92,19 @@ Range
 			(config-if)switchport port-security mac-address sticky
 			(config-if)switchport port-security violation shutdown
 	#show port-security interface f0/1
+
+DHCP
+		(config)int f0/1
+			(config-if)ip add 192.168.10.1 255.255.255.0
+			(config-if)no shut
+			(config-if)exit
+		(config)ip dhcp pool IP10
+			(dhcp-config)net 192.168.10.0 255.255.255.0
+			(dhcp-config)default 192.168.10.1
+			(dhcp-config)exit
+		(config)ip dhcp exclude 192.168.10.1 192.168.10.10
+		(config) 
+			
+			
 			
 			
