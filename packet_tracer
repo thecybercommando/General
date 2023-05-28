@@ -106,25 +106,28 @@ DHCP
 		(config) 
 
 Static Routing
-	R1#ip route 192.168.2.0 255.255.255.0 10.10.10.2 #last ip is exit hop IP
-	R2#ip route 192.168.1.0 255.255.255.0 10.10.10.1 #last ip is exit hop IP
+		R1(config)ip route 192.168.2.0 255.255.255.0 10.10.10.2 	#last ip is exit hop IP
+		R2(config)ip route 192.168.1.0 255.255.255.0 10.10.10.1 	#last ip is exit hop IP
 
 RIPv2
 		R1(config)router rip
-			version 2
-			network 192.168.1.0
-			network 10.10.10.0
+			(config-router)version 2
+			(config-router)no auto-summary 			#disables summarisation of networks
+			(config-router)passive-interface g0/0 		#will not send routing information to this interface
+			(config-router)default-information originate 	#advertise default route with other RIP routers
+			(config-router)network 192.168.1.0
+			(config-router)network 10.10.10.0
 			
 		R2(config)router rip
-			version 2
-			network 192.168.2.0
-			network 10.10.10.0
-			network 20.20.20.0
+			(config-router)version 2
+			(config-router)network 192.168.2.0
+			(config-router)network 10.10.10.0
+			(config-router)network 20.20.20.0
 		
 		R3(config)router rip
-			version 2
-			network 192.168.3.0
-			network 20.20.20.0
+			(config-router)version 2
+			(config-router)network 192.168.3.0
+			(config-router)network 20.20.20.0
 			
 			
 			
