@@ -128,6 +128,21 @@ RIPv2
 			(config-router)version 2
 			(config-router)network 192.168.3.0
 			(config-router)network 20.20.20.0
+
+Firewall
+		ciscoasa(config)hostname ASA
+		ciscoasa(config)domain-name ciscosecurity.com
+		ciscoasa(config)enable password cisco123
+		ciscoasa(config)int vlan1
+			(config-if)nameif inside
+			(config-if)ip add 192.168.1.1 255.255.255.0
+			(config-if)security-level 100
+		ciscoasa(config)int vlan2
+			(config-if)nameif outside
+			(config-if)ip add 209.165.200.226 255.255.255.248
+			(config-if)security-level 0
+			(config-if)show switch vlan
+			(config-if)show int ip brief 			#slightly different to switch/router
 			
 			
 			
